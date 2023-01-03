@@ -1,0 +1,137 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bitoc}[tableofcontents for bjutthesis.cls]
+
+\RequirePackage{xparse}
+\RequirePackage{hyperref}
+\hypersetup{linktoc=all}
+\RequirePackage[notintoc]{nomencl}
+
+%% Names
+\def\cabstractname{摘\quad 要}
+\def\ccontentsname{目\quad 录}
+\def\cnomname{术语表}
+\def\cconclusionname{结\quad 论}
+\def\cbibname{参考文献}
+\def\cappendixname{附录}
+\def\cpubname{攻读硕士学位期间索取得的主要科研成果}
+\def\cackname{致\quad 谢}
+\def\clistfigurename{插图目录}
+\def\clisttablename{表格目录}
+\def\eabstractname{Abstract}
+\def\econtentsname{Contents}
+\def\enomname{Nomenclature}
+\def\echaptername{Chapter}
+\def\econclusionname{Conclusions}
+\def\ebibname{References}
+\def\eappendixname{Appendix}
+\def\epubname{Publications}
+\def\eackname{Acknowledgement}
+\def\elistfigurename{List of Figures}
+\def\elisttablename{List of Tables}
+
+%% NEW Commands
+\NewDocumentCommand{\bichapter}{sO{}mm}{%
+  % O{} or #2 for set font of English chap entries in Chinese ToC with header normalfont
+  \IfBooleanTF{#1}
+    {\chapter*{#2#3}
+    \markboth{#3}{}
+    \addcontentsline{toc}{chapter}{#2#3}
+    \addcontentsline{toe}{chapter}{\bfseries#4}}
+    {\chapter{#3}
+    \addcontentsline{toe}{chapter}{\bfseries\echaptername~\thechapter~~#4}}}
+
+\NewDocumentCommand{\bisection}{mm}{%
+    \section{#1}
+    \addcontentsline{toe}{section}{\thesection~~#2}}
+\NewDocumentCommand{\bisubsection}{mm}{%
+    \subsection{#1}
+    \addcontentsline{toe}{subsection}{\thesubsection~~#2}}
+\renewcommand{\appendixname}{\cappendixname}
+\NewDocumentCommand{\biappendix}{mm}{%
+    \ctexset{chapter/format=\bjut@chapter@font\raggedright}
+    \chapter{#1}
+    \ctexset{chapter/format=\bjut@chapter@font\centering}
+    \addcontentsline{toe}{chapter}{\bfseries\eappendixname~\thechapter~~#2}}
+
+%% ==== Make Bilingual ToC
+\renewcommand\contentsname\ccontentsname
+
+\newcommand{\makebitoc}{%
+     % 正确生成目录项，一般需要编译两次源代码。
+    {\zihao{-4}\linespread{1.53}\selectfont\tableofcontents}\normalsize
+    %\addcontentsline{toc}{chapter}{\ccontentsname}
+    %\addcontentsline{toe}{chapter}{\bfseries\econtentsname~(in Chinese)}
+    %\bichapter*[\bfseries]{\econtentsname}{\econtentsname}
+    %{\zihao{-4}\linespread{1.53}\selectfont\@starttoc{toe}}\normalsize
+}
+
+%% ==== Lists
+\renewcommand\listfigurename\clistfigurename
+\renewcommand\listtablename\clisttablename
+\let\oldlistoffigures\listoffigures
+\let\oldlistoftables\listoftables
+\renewcommand\listoffigures{%
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\clistfigurename}
+    \addcontentsline{toe}{chapter}{\bfseries\elistfigurename}
+    \oldlistoffigures}
+\renewcommand\listoftables{
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\clisttablename}
+    \addcontentsline{toe}{chapter}{\bfseries\elisttablename}
+    \oldlistoftables}
+
+%% ==== Nomenclature
+\renewcommand\nomname\cnomname
+\makenomenclature
+\let\oldprintnomenclature\printnomenclature
+\renewcommand\printnomenclature{%
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\cnomname}
+  \addcontentsline{toe}{chapter}{\bfseries\enomname}
+  \oldprintnomenclature}
+
+% ==== Reference
+\renewcommand\bibname\cbibname
+\NewDocumentCommand{\makebib}{m}{%
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \addcontentsline{toe}{chapter}{\bfseries\ebibname}
+    \bibliography{#1}}
+
+%% ==== NEW Environments
+% ==== Abstract Environment
+\newcommand\ckeywords{%
+    \par
+    \vspace{12pt}
+    \noindent{\zihao{-4}\heiti 关键词：}\relax}
+\newcommand\ekeywords{%
+    \par
+    \vspace{12pt}
+    \noindent{\zihao{-4}\bfseries Keywords:~}\relax}
+\NewDocumentEnvironment{cabstract}{}{%
+    \bichapter*{\cabstractname}{\eabstractname~(in Chinese)}
+}{\relax}
+\NewDocumentEnvironment{eabstract}{}{%
+    \bichapter*[\bfseries]{\eabstractname}{\eabstractname}
+}{\relax}
+
+% ==== Conclusions Environment
+\NewDocumentEnvironment{conclusion}{}{%
+    \bichapter*{\cconclusionname}{\econclusionname}
+}{\relax}
+
+% ==== Publication Environment
+\NewDocumentEnvironment{publication}{}{%
+    \bichapter*{\cpubname}{\epubname}
+}{\relax}
+
+% ==== Acknowledgement Environment
+\NewDocumentEnvironment{acknowledgement}{}{%
+    \bichapter*{\cackname}{\eackname}
+}{\relax}
+

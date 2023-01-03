@@ -1,0 +1,18 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ezinfo}[metadata]
+
+\RequirePackage{xparse}
+\RequirePackage{xkeyval, kvsetkeys}
+
+%% ==== ez@def@key{title}, equivalently
+%\newcommand\ez@title\empty
+%\newcommand\eztitle[1]{\renewcommand\ez@title{#1}}
+
+\NewDocumentCommand\ez@def@key{m}{%
+	\@namedef{ez#1}##1{\@namedef{ez@#1}{##1}}
+	\define@key{ez}{#1}{\csname ez#1\endcsname{##1}} }
+\NewDocumentCommand{\ezsetkeys}{m}{\kvsetkeys{ez}{#1} }
+
+\InputIfFileExists{ezinfo.cfg}%
+{\PackageInfo{ezinfo}{reading definitions from ezinfo.cfg}}{}%
+

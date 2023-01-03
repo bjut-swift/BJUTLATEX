@@ -1,0 +1,41 @@
+%!TEX program = xelatex
+\documentclass{bjutthesis}
+\usepackage{fancyvrb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\bjutset{
+  clc = {},
+  udc = {},
+  schoolcode = {},
+  secretlevel = {},
+  ctitle = {北京工业大学硕士研究生学位\LaTeX 论文模版（学术型硕士）},
+  cauthor = {},
+  cdiscipline = {},
+  csupervisor = {},
+  csupervstitle = {},
+  cdate = {},
+  studentid = {},
+  etitle = {Master Degree of Beijing University of Technology \LaTeX\quad Thesis Template (Academic Master)},
+  cmajor = {},
+  cdegree = {},
+  ccollege = {},
+  corganization = {},
+}
+
+\begin{document}
+\makecover
+\maketitle
+\makestate
+\frontmatter
+\include{cabstract}
+\include{eabstract}
+\makebitoc
+\mainmatter
+\include{chapt1}
+\include{conclusion}
+\makebib{reference}
+\backmatter
+\include{publication}
+\include{acknowledgement}
+\end{document}

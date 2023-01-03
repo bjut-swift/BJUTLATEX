@@ -1,0 +1,216 @@
+\bichapter{介绍和使用}{Introduction}\label{chap:intro}
+欢迎使用北京工业大学硕士研究生学位\LaTeX 论文模版（学术型硕士）。制作本模版的思路是因为Office for MacOS的体验极差，加
+之本人又对word十分不熟练。网上目前没有现成的模版给我白嫖，本着开源精神和拙劣的\LaTeX 理解，参考部分模版（见致谢）赶工
+出该模版的1.0版本。希望借助此模版，使用者能将本就在毕业季不多的精力专注于文字而不是行距、行高、段落等繁琐的格式上。接下来将介绍模版的使用方法。
+
+本模版中大量格式参考《北京工业大学研究生学位论文撰写规范》和北京工业大学博士论文\LaTeX 模版（见致谢）。但仍有小部分
+细节格式未确认（见readme todo list）。关于格式定制问题，欢迎issue 至此模版的git仓库。
+
+\bisection{如何使用}{howtouse}\label{sec:fst}
+
+\subsection{模版文件总览}
+首先要明确的是，\LaTeX 出于安全的考虑，在unix环境下，往上一级目录写入编译时文件（如aux文件）时会被禁止。为了最大兼容
+性，当前版本的模版将所有的文件都放置在同一级目录下。（不排除某些tex的特殊编译设置或单独设置的环境变量）
+
+大多数用户使用时，都不必关注所有文件，只需了解如下几个文件：
+
+\begin{center}
+  \begin{minipage}{0.95\textwidth}
+    \begin{Verbatim}[frame=single]
+    主文档 : main.tex         中文摘要 : cabstract.tex
+    英文摘要 : eabstract.tex  章节文档 : chapt*.tex
+    引用文档 : reference.bib  用户出版物文档 : publication.tex
+    致谢文档 : acknowledge.tex
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+以上文档使用时，基本上只需填入文字内容即可，不需要考虑格式。
+
+% 文字\cite{Boutsidis2011}
+\subsubsection{主文档}
+
+主文档主要用于记录用户基本信息，组织论文结构。在主文档中，如下内容需要用户自行填写或更改：
+
+\begin{center}
+  \begin{minipage}{0.65\textwidth}
+    \begin{Verbatim}[frame=single]
+      中文图书分类号 clc
+      UDC分类号 udc
+      学校代码 schoolcode
+      密级 secretlevel
+      论文中文题目 ctitle
+      作者姓名 cauthor
+      学科 cdiscipline
+      指导教师 csupervisior
+      指导教师职称 csupervstitle
+      论文提交/答辩日期 cdate
+      学号 sutdentid
+      论文英文题目 etitle
+      研究方向 cmajor
+      申请学位 cdegree
+      所在单位 ccollege
+      授予学位单位 corganization
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+主文档正文部分组织了论文结构，论文正文内容由\verb |chapt1.tex|, \verb|chapt2.tex|等组织。用户自行添加，参考章节文档一节。%（todo）
+
+\subsubsection{中文摘要}
+
+中文摘要内容由\verb|cabstract|环境包裹，两个段落之间以大于1行的空行作为分割。
+
+在中文文档中，有\verb|ckeywords|环境包裹的关键词，以"；"分割。
+
+\subsubsection{英文摘要}
+
+ 英文摘要与中文摘要一致，由\verb|eabstract|环境包裹。
+
+ 类似的，也有\verb|ekeywords|环境包裹的关键词，但以","分割。
+
+ \subsubsection{章节文档}
+ 章节文档是论文的主要内容，在章节文档中，包含不同的小结，本模版共4级小结，分别由\verb|bisection|, \verb|subsection|, \verb|subsubsection|,  \verb|subsubsubsection| 标记。
+ 其中，目录会记录至第二级小结，即\verb|subsection|。具体书写格式参考本文档源码（\verb|chapt1.tex|）。
+
+\subsubsection{引用文档}
+
+引用文档格式为正常\verb|bib file|。
+
+\subsubsection{出版物文档}
+
+直接在\verb|publication|环境中添加即可。
+
+\subsubsection{致谢文档}
+
+同引用文档。
+
+\bisection{基本语法}
+下面介绍一些基本语法。可自行修改。
+\subsection{如何插入图片并引用}
+
+\begin{center}
+  \begin{minipage}{0.95\textwidth}
+    \begin{Verbatim}[frame=single]
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{bjut_logo_color.pdf}
+  \bicaption{中文图题}{English Figure Title}
+  \label{fig:logo}
+\end{figure}
+
+% 使用\cref{<label>}引用: 如\cref{fig:logo}所示
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width=0.8\textwidth]{bjut_logo_color.pdf}
+  \bicaption{中文图题}{English Figure Title}
+  \label{fig:logo}
+\end{figure}
+“如\cref{fig:logo}所示”
+
+\subsection{如何插入表格并引用}
+
+\begin{center}
+  \begin{minipage}{0.95\textwidth}
+    \small
+    \begin{Verbatim}[frame=single]
+        \begin{table}[htpb]
+          \centering
+          \bicaption[]{三线表}{A Table Example}
+          \label{tab:1st}
+          \begin{tabular}{@{}llr@{}}
+            \toprule
+            \multicolumn{2}{c}{Item} & \\
+            \cmidrule(r){1-2}
+            Animal    & Description  & Price(\$) \\
+            \midrule
+            Gnat      & pergram      & 13.65 \\
+            & each         & 0.01 \\
+            Gnu       & stuffed      & 92.50 \\
+            Emu       & stuffed      & 33.33 \\
+            Armadillo & frozen       & 8.99 \\
+            \bottomrule
+          \end{tabular}
+        \end{table}
+        % 引用方法与图片一致 如\cref{tab:1st}所示
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+        \begin{table}[htpb]
+          \centering
+          \bicaption[]{三线表}{A Table Example}
+          \label{tab:1st}
+          \begin{tabular}{@{}llr@{}}
+            \toprule
+            \multicolumn{2}{c}{Item} & \\
+            \cmidrule(r){1-2}
+            Animal    & Description  & Price(\$) \\
+            \midrule
+            Gnat      & pergram      & 13.65 \\
+            & each         & 0.01 \\
+            Gnu       & stuffed      & 92.50 \\
+            Emu       & stuffed      & 33.33 \\
+            Armadillo & frozen       & 8.99 \\
+            \bottomrule
+          \end{tabular}
+        \end{table}
+
+“如\cref{tab:1st}所示”
+
+
+\subsection{如何插入公式}
+
+\begin{center}
+  \begin{minipage}{0.85\textwidth}
+    \begin{Verbatim}[frame=single]
+      \begin{equation}\label{eq:eq1}
+        e^{\pi i}+1 = 0
+      \end{equation}
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+      \begin{equation}\label{eq:eq1}
+        e^{\pi i}+1 = 0
+      \end{equation}
+
+\subsection{如何插入算法}
+
+\begin{center}
+  \begin{minipage}{0.85\textwidth}
+    \begin{Verbatim}[frame=single]
+\begin{algorithm}[htbp]
+  \caption{1+1等于几}
+  \label{alg:algorithm}
+    \begin{algorithmic}[1]
+      \REQUIRE $1$.
+      \ENSURE $1$.
+      \STATE $i \leftarrow 1$
+      \FOR {$i \leq 1$}
+        \STATE $i \leftarrow i + 1$;
+      \ENDFOR
+      \STATE Return $i$.
+    \end{algorithmic}
+\end{algorithm}
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+\begin{algorithm}[htbp]
+\caption{1+1等于几}
+\label{alg:algorithm}
+\begin{algorithmic}[1]
+\REQUIRE $1$.
+\ENSURE $1$.
+\STATE $i \leftarrow 1$
+\FOR {$i \leq 1$}
+\STATE $i \leftarrow i + 1$;
+\ENDFOR
+\STATE Return $i$.
+\end{algorithmic}
+\end{algorithm}
