@@ -1,7 +1,10 @@
-# 2023.01.30
+# 2023.01.30更新
 
-更新了算法伪代码的样式，现在显示为:
+- 更新了算法伪代码的样式，现在显示为:
 <img width="148" alt="image" src="https://user-images.githubusercontent.com/98371836/215377556-dad6ea7c-c8b9-4cee-b417-c57f84358af2.png">
+
+- 订正了部分数学字体的显示问题，现在他们可以正确显示了：
+<img width="180" alt="image" src="https://user-images.githubusercontent.com/98371836/215472929-1bd8d985-8f09-448c-bce7-202ba5234bf6.png">
 
 # 2023.01.16更新
 
