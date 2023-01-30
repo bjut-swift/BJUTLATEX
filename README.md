@@ -1,3 +1,8 @@
+# 2023.01.30
+
+更新了算法伪代码的样式，现在显示为:
+<img width="148" alt="image" src="https://user-images.githubusercontent.com/98371836/215377556-dad6ea7c-c8b9-4cee-b417-c57f84358af2.png">
+
 # 2023.01.16更新
 
 春节回家过年，主机没带，带了自己的老mbp，测试发现Tex Live 2019下会报错（例如kv宏包的可选参数不能正确识别等），因此目前默认本模版是不向下兼容的。
