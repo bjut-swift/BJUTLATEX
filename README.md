@@ -1,3 +1,10 @@
+# 2023.02.07更新
+
+- 修复了一些宏包冲突引起的数学公式显示问题，现在可以正常显示了。
+
+<img width="183" alt="image" src="https://user-images.githubusercontent.com/98371836/217437223-884e96f3-77b6-4e7f-befc-00d9971db589.png">
+
+
 # 2023.02.02更新
 借助Adobe Acrobat测量《北京工业大学研究生论文撰写规范（试行）》（有误差,+- 0.05cm），对模版进行了细节的调整，以使其尽可能达到与M$ Word一致的视觉效果，部分测量数据标注如下图：
 <img width="722" alt="image" src="https://user-images.githubusercontent.com/98371836/216311552-21499cc5-2dd9-4c42-99e7-54d3dff4f894.png">
