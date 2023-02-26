@@ -1,4 +1,6 @@
 \bichapter{介绍和使用}{Introduction}\label{chap:intro}
+\linespread{1.08}\selectfont
+
 欢迎使用北京工业大学硕士研究生学位\LaTeX 论文模版（学术型硕士）。制作本模版的思路是因为Office for MacOS的体验极差，加
 之本人又对word十分不熟练。网上目前没有现成的模版给我白嫖，本着开源精神和拙劣的\LaTeX 理解，参考部分模版（见致谢）赶工
 出该模版的1.0版本。希望借助此模版，使用者能将本就在毕业季不多的精力专注于文字而不是行距、行高、段落等繁琐的格式上。接下来将介绍模版的使用方法。
@@ -6,8 +8,32 @@
 本模版中大量格式参考《北京工业大学研究生学位论文撰写规范》和北京工业大学博士论文\LaTeX 模版（见致谢）。但仍有小部分
 细节格式未确认（见readme todo list）。关于格式定制问题，欢迎issue 至此模版的git仓库。
 
-\bisection{如何使用}{howtouse}\label{sec:fst}
+一些需要你手动设置的内容：
 
+小节之前插入下行语句保证间隔
+\begin{center}
+  \begin{minipage}{0.5\textwidth}
+    \begin{Verbatim}[frame=single]
+    \hspace*{\fill}
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+\$M Word的行距计算涉及到不同字体类型，多倍行距单倍行距等内容，甚至可能在不同操作系统下不一致，这和\LaTeX 的基线算法十
+分有出入，因此，为了和让人很迷糊的\$M Word 看起来尽可能视觉效果一致，需要手动在每个正文文件前设置如下内容。
+
+\begin{center}
+  \begin{minipage}{0.5\textwidth}
+    \begin{Verbatim}[frame=single]
+\linespread{1.08}\selectfont
+    \end{Verbatim}
+  \end{minipage}
+\end{center}
+
+
+\hspace*{\fill}
+
+\bisection{如何使用}{howtouse}\label{sec:fst}
 \subsection{模版文件总览}
 首先要明确的是，\LaTeX 出于安全的考虑，在unix环境下，往上一级目录写入编译时文件（如aux文件）时会被禁止。为了最大兼容
 性，当前版本的模版将所有的文件都放置在同一级目录下。（不排除某些tex的特殊编译设置或单独设置的环境变量）
@@ -164,6 +190,8 @@
 
 
 \subsection{如何插入公式}
+
+注意，插入公式时，公式环境和前后文字之间不应该有空行。
 
 \begin{center}
   \begin{minipage}{0.85\textwidth}
