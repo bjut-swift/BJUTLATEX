@@ -2,7 +2,7 @@
 \ProvidesClass{bjutthesis}[2022/12/30 By WangPeiKe]
 
 % base settings for cls file
-\LoadClass[UTF8,scheme=plain,zihao=-4,linespread=1.42,sub3sectiuon,openany]{ctexbook}
+\LoadClass[UTF8,scheme=plain,zihao=-4,linespread=1.42,sub3sectiuon]{ctexbook}
 \ctexset{
   punct = quanjiao,
   space = auto,
@@ -54,7 +54,7 @@
 %\renewcommand{\baselinestretch}{1.3}
 
 % 组内往届毕业生封面部分英文数字使用了加粗黑体
-% 这与规范文件不符，又足内毕业生的模版均为古早毕业生流传下来的word版本
+% 这与规范文件不符，又组内毕业生的模版均为古早毕业生流传下来的word版本
 % 姑且以为他们全都错了。
 
 %\xeCJKDeclareCharClass{CJK}{`0 -> `9}
@@ -280,7 +280,6 @@
   \restoregeometry
   \nopagecolor
   \global\let\makecover\relax
-  \let\cleardoublepage\clearpage
 }
 
 % 内封
@@ -444,3 +443,6 @@
 \floatname{algorithm}{算法}
 \renewcommand{\algorithmicrequire}{输入：}
 \renewcommand{\algorithmicensure}{输出：}
+
+AtBeginDocument{
+  \pagestyle{empty}}
