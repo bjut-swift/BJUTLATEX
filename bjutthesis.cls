@@ -144,7 +144,7 @@
 \captionsetup[figure][bi-second]{name=Fig.}
 \captionsetup[table]{labelsep=space, format=hang}
 \captionsetup[table][bi-first]{name=表}
-\captionsetup[table][bi-second]{name=Table}
+\captionsetup[table][bi-second]{name=Tab.}
 
 % cross references
 \RequirePackage{hyperref}
