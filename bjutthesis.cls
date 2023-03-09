@@ -444,5 +444,5 @@
 \renewcommand{\algorithmicrequire}{输入：}
 \renewcommand{\algorithmicensure}{输出：}
 
-AtBeginDocument{
+\AtBeginDocument{
   \pagestyle{empty}}
