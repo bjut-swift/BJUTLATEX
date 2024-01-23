@@ -46,7 +46,9 @@ https://www.google.com/
 
 # 可能遇到的问题
 
-收集中
+- [x] 参考文献的数字标号可能会和中括号不对齐，虽然不影响格式检查，但可以参考[此处](https://github.com/PEKEW/BJUTLATEX/issues/5#issue-2087856053)进行修改。
+
+收集中...
 
 # todo
 
