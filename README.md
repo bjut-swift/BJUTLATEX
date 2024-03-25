@@ -64,4 +64,5 @@ https://www.google.com/
 
 # 感谢
 
-本模版参考了大量[该模版](https://github.com/fisherxt/bjutthesis)的格式，组织方式等。
+- 本模版参考了大量[该模版](https://github.com/fisherxt/bjutthesis)的格式，组织方式等。
+- 感谢[superciv](https://github.com/superciv)同学对格式细节做出的测试和调整。
